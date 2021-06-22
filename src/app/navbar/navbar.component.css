@@ -1,0 +1,24 @@
+.navbar{
+  margin: 0px;
+  padding: 22px 0 22px;
+}
+
+.bg-light {
+  background-color: #1e94d2!important;
+}
+
+.ulMenu,li,a{
+   color: rgb(255, 255, 255);
+   font-weight: bold;
+   font-size: 17px;
+   padding-inline: 0px 20px;
+   list-style-type: none;
+   display: inline;
+   text-decoration: none;
+
+}
+
+.ulMenu,:hover{
+  color: black
+
+}
