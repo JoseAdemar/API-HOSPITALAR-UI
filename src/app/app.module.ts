@@ -8,12 +8,19 @@ import { TableModule } from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DropdownModule} from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrdemDeServicoComponent } from './ordem-de-servico/ordem-de-servico.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    CadastroPacienteComponent
+    CadastroPacienteComponent,
+    OrdemDeServicoComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +28,12 @@ import {InputTextModule} from 'primeng/inputtext';
     TableModule,
     TooltipModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    NgbModule,
+    DropdownModule,
+    CalendarModule,
+    BrowserAnimationsModule,
+    InputTextareaModule
 
   ],
   providers: [],
