@@ -11,6 +11,11 @@
               <input type="text" pInputText>
          </div>
 
+         <div class="p-col-2 p-fluid">
+          <label>CPF</label>
+          <input type="text" pInputText>
+     </div>
+
           <div class="p-col-1 p-fluid">
               <label>Idade</label>
               <p-dropdown [options]="categorias" optionValue="code"></p-dropdown>
@@ -48,28 +53,32 @@
 
   <div class="p-grid">
     <div class="p-col-12">
-      <p-table [value]="registros" [paginator]="true" rows="2" styleClass="p-datatable-striped">
+      <p-table [value]="pacientes" [paginator]="true" rows="2" styleClass="p-datatable-striped">
         <ng-template pTemplate="header">
           <tr>
+            <th class="col-data-header">ID</th>
             <th class="col-data-header">Nome</th>
+            <th class="col-data-header">CPF</th>
             <th class="col-data-header">Idade</th>
             <th class="col-data-header">Nascimento</th>
             <th class="col-valor-header">Telefone</th>
             <th class="col-data-header" style="align-content:center; width: 117px; "></th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-registro>
-          <tr>
-            <td class="col-data-content">{{ registro.nome }}</td>
-            <td class="col-data-content">{{ registro.idade }}</td>
-            <td class="col-data-content">{{ registro.nascimento }}</td>
-            <td class="col-valor-content">{{ registro.telefone }}</td>
+       <ng-template>
+          <tr *ngFor="let p of pacientes">
+            <td class="col-data-content">{{p.id}}</td>
+            <td class="col-data-content">{{p.nome}}</td>
+            <td class="col-data-content">{{p.cpf}}</td>
+            <td class="col-data-content">{{p.idade}}</td>
+            <td class="col-data-content">{{p.dataNascimento}}</td>
+            <td class="col-data-content">{{p.telefone}}</td>
             <td>
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>&nbsp;
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
             </td>
           </tr>
-        </ng-template>
+       </ng-template>
       </p-table>
     </div>
   </div>

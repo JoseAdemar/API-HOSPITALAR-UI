@@ -14,6 +14,8 @@ import {CalendarModule} from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrdemDeServicoComponent } from './ordem-de-servico/ordem-de-servico.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { PacientesService } from './pacientes.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,11 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     DropdownModule,
     CalendarModule,
     BrowserAnimationsModule,
-    InputTextareaModule
+    InputTextareaModule,
+    HttpClientModule
 
   ],
-  providers: [],
+  providers: [HttpClientModule, PacientesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

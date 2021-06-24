@@ -1,29 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { PacientesService } from '../pacientes.service';
 
 @Component({
   selector: 'app-cadastro-paciente',
   templateUrl: './cadastro-paciente.component.html',
   styleUrls: ['./cadastro-paciente.component.css']
 })
-export class CadastroPacienteComponent {
+export class CadastroPacienteComponent implements OnInit {
 
-  categorias = [
-    { label: '18', value: 1 },
-    { label: '19', value: 2 },
-    { label: '20', value: 3 },
-    { label: '21', value: 4 },
-    { label: '22', value: 5 },
-    
-  ];
-  
+  pacientes: Array<any> = new Array();
 
-  registros = [
-    { nome: 'Pedro Martins',idade: '25', nascimento: '18/06/1990', telefone: '8542158' },
-    { nome: 'Pedro Martins',idade: '25', nascimento: '18/06/1990', telefone: '8542158' },
-    { nome: 'Pedro Martins',idade: '25', nascimento: '18/06/1990', telefone: '8542158' },
-    
-  ];
+    constructor(private pacienteService: PacientesService) {}
+
+     ngOnInit() {
+        this.listarPacientes();
+     }
+
+     listarPacientes() {
+        this.pacienteService.listarPacientes().subscribe(dados => {
+          this.pacientes = dados;
+
+        }, err => {
+          console.log('Erro ao listar os pacientes', err);
+        })
+     }
+
+
+
+
+     categorias = [
+      { label: '18', value: 1 },
+      { label: '19', value: 2 },
+      { label: '20', value: 3 },
+      { label: '21', value: 4 },
+      { label: '22', value: 5 },
+      
+    ];
 }
+
+
+
 
 
  
