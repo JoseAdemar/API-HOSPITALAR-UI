@@ -8,32 +8,32 @@
     <div class="p-grid">
          <div class="p-col-5 p-fluid">
               <label>Nome</label>
-              <input type="text" pInputText>
+              <input type="text" name="nome" [(ngModel)]="p.nome" pInputText >
          </div>
 
          <div class="p-col-2 p-fluid">
           <label>CPF</label>
-          <input type="text" pInputText>
+          <input type="text" name="cpf" [(ngModel)]="p.cpf" pInputText>
      </div>
 
           <div class="p-col-1 p-fluid">
               <label>Idade</label>
-              <p-dropdown [options]="categorias" optionValue="code"></p-dropdown>
+              <p-dropdown [options]="categorias" optionValue="code" [(ngModel)]="p.idade"></p-dropdown>
           </div>
 
           <div class="p-col-2 p-fluid">
             <label>Nascimento</label>
-            <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false"></p-calendar>
+            <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [(ngModel)]="p.dataNascimento"></p-calendar>
 
         </div>
 
           <div class="p-col-3 p-fluid">
             <label>Telefone</label>
-            <input type="text" pInputText>
+            <input type="text" name="telefone" [(ngModel)]="p.telefone" pInputText>
         </div>
 
         <div class="p-col-12">
-          <button pButton type="button" label="Cadastrar"></button>
+          <button pButton type="button" (click)="cadastrar()" label="Cadastrar"></button>
       </div>
     </div>
 
@@ -53,10 +53,10 @@
 
   <div class="p-grid">
     <div class="p-col-12">
-      <p-table [value]="pacientes" [paginator]="true" rows="2" styleClass="p-datatable-striped">
+      <p-table [value]="pacientes" [paginator]="true" rows="1" styleClass="p-datatable-striped">
         <ng-template pTemplate="header">
           <tr>
-            <th class="col-data-header">ID</th>
+            <th class="col-data-header">Id</th>
             <th class="col-data-header">Nome</th>
             <th class="col-data-header">CPF</th>
             <th class="col-data-header">Idade</th>
@@ -65,7 +65,7 @@
             <th class="col-data-header" style="align-content:center; width: 117px; "></th>
           </tr>
         </ng-template>
-       <ng-template>
+       <ng-template pTemplate="body">
             <tr *ngFor="let p of pacientes">
             <td class="col-data-content">{{ p.id }}</td>
             <td class="col-data-content">{{ p.nome }}</td>
@@ -74,8 +74,8 @@
             <td class="col-data-content">{{ p.dataNascimento }}</td>
             <td class="col-data-content">{{ p.telefone }}</td>
             <td>
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>&nbsp;
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+              <a pButton (click)="atualizar(p.id)" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>&nbsp;
+              <button pButton (click)="remover(p.id)" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
             </td>
           </tr>
        </ng-template>

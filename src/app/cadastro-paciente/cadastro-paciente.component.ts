@@ -1,6 +1,7 @@
-import { DadosPacientes } from './../models/placeholder.model';
 import { Component, OnInit } from '@angular/core';
-import { PacientesService } from '../pacientes.service';
+import { PacientesService } from 'src/app/pacientes.service';
+import { PacienteModel } from '../models/pacient.model';
+
 
 
 @Component({
@@ -10,6 +11,7 @@ import { PacientesService } from '../pacientes.service';
 })
 export class CadastroPacienteComponent implements OnInit {
 
+  p: PacienteModel = new PacienteModel();
   pacientes: Array<any> = new Array();
 
     constructor(private pacienteService: PacientesService) {}
@@ -18,14 +20,42 @@ export class CadastroPacienteComponent implements OnInit {
     this.listarPacientes();
   }
 
-     listarPacientes() {
-        this.pacienteService.listarPacientes().subscribe(data  => {
-          this.pacientes = data;
+  atualizar(id: number) {
+      this.pacienteService.atualizarPaciente(id, this.p).subscribe(data => {
+      this.p = new PacienteModel();
+      this.listarPacientes();
 
-        }, error => {
-          console.log('Erro ao listar os pacientes', error);
-        })
-     }
+    }, error => { console.log('Erro ao atualizar cadastro de paciente', error) })
+  }
+
+  remover(id:number){
+      this.pacienteService.removerPaciente(id).subscribe(data => {
+      this.p = new PacienteModel();
+      this.listarPacientes();
+
+    }, error => { console.log('Erro ao remover cadastro de paciente', error) })
+  }
+
+
+  
+  cadastrar() {
+    console.log(this.p);
+    this.pacienteService.cadastrarPaciente(this.p).subscribe(data => {
+         this.p = new PacienteModel();
+         this.listarPacientes();
+
+    }, error => { console.log('Erro ao cadastrar paciente', error) })
+  }
+
+  listarPacientes() {
+    this.pacienteService.listarPacientes().subscribe(data => {
+      this.pacientes = data;
+      console.log(data);
+
+    }, error => {
+      console.log('Erro ao listar os pacientes', error);
+    })
+  }
 
 
 

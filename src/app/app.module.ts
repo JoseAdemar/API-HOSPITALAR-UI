@@ -16,6 +16,7 @@ import { OrdemDeServicoComponent } from './ordem-de-servico/ordem-de-servico.com
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { PacientesService } from './pacientes.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     CalendarModule,
     BrowserAnimationsModule,
     InputTextareaModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [HttpClientModule, PacientesService],
   bootstrap: [AppComponent]
