@@ -37,7 +37,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     InputTextareaModule,
     HttpClientModule
-
   ],
   providers: [HttpClientModule, PacientesService],
   bootstrap: [AppComponent]

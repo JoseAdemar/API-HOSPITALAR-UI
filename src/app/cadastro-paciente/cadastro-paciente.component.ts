@@ -1,5 +1,7 @@
+import { DadosPacientes } from './../models/placeholder.model';
 import { Component, OnInit } from '@angular/core';
 import { PacientesService } from '../pacientes.service';
+
 
 @Component({
   selector: 'app-cadastro-paciente',
@@ -12,16 +14,16 @@ export class CadastroPacienteComponent implements OnInit {
 
     constructor(private pacienteService: PacientesService) {}
 
-     ngOnInit() {
-        this.listarPacientes();
-     }
+  ngOnInit() {
+    this.listarPacientes();
+  }
 
      listarPacientes() {
-        this.pacienteService.listarPacientes().subscribe(dados => {
-          this.pacientes = dados;
+        this.pacienteService.listarPacientes().subscribe(data  => {
+          this.pacientes = data;
 
-        }, err => {
-          console.log('Erro ao listar os pacientes', err);
+        }, error => {
+          console.log('Erro ao listar os pacientes', error);
         })
      }
 
@@ -34,7 +36,7 @@ export class CadastroPacienteComponent implements OnInit {
       { label: '20', value: 3 },
       { label: '21', value: 4 },
       { label: '22', value: 5 },
-      
+
     ];
 }
 
@@ -42,4 +44,3 @@ export class CadastroPacienteComponent implements OnInit {
 
 
 
- 

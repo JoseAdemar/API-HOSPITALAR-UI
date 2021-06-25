@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DadosPacientes } from './models/placeholder.model';
 
 
 
@@ -11,7 +12,7 @@ export class PacientesService {
 
   constructor(private http: HttpClient) { }
 
-    listarPacientes(): Observable<any> {
+  public listarPacientes(): Observable<any> {
      return  this.http.get('http://localhost:8080/pacientes');
    }
 }
