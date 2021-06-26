@@ -28,6 +28,17 @@ export class CadastroPacienteComponent implements OnInit {
     }, error => { console.log('Erro ao atualizar cadastro de paciente', error) })
   }
 
+  editar(id: number) {
+    console.log(id);
+    // aqui voce precisa chamar o metodo que busca por id, pra preencher o objeto.
+    this.pacienteService.carregarPaciente(id, this.p).subscribe(data => {
+      this.p = data;
+      console.log(data);
+    });
+
+}
+
+
   remover(id:number){
       this.pacienteService.removerPaciente(id).subscribe(data => {
       this.p = new PacienteModel();
@@ -37,7 +48,7 @@ export class CadastroPacienteComponent implements OnInit {
   }
 
 
-  
+
   cadastrar() {
     console.log(this.p);
     this.pacienteService.cadastrarPaciente(this.p).subscribe(data => {
@@ -60,14 +71,14 @@ export class CadastroPacienteComponent implements OnInit {
 
 
 
-     categorias = [
+   /*  categorias = [
       { label: '18', value: 1 },
       { label: '19', value: 2 },
       { label: '20', value: 3 },
       { label: '21', value: 4 },
       { label: '22', value: 5 },
 
-    ];
+    ];*/
 }
 
 

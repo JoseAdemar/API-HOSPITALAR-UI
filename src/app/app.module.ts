@@ -17,13 +17,16 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import { PacientesService } from './pacientes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CadastroPacienteComponent,
-    OrdemDeServicoComponent
+    OrdemDeServicoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +41,17 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     InputTextareaModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
+    RouterModule.forRoot([
+
+        { path: '', component: HomeComponent},
+        { path: 'cadastro-paciente', component: CadastroPacienteComponent},
+        { path: 'cadastro-paciente/:id', component: CadastroPacienteComponent},
+        { path: 'cadastro-os', component: OrdemDeServicoComponent}
+    ])
   ],
+
   providers: [HttpClientModule, PacientesService],
   bootstrap: [AppComponent]
 })
