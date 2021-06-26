@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class OrdemDeServicoService {
 
- 
+
   constructor(private http: HttpClient) { }
 
 
@@ -23,6 +23,10 @@ export class OrdemDeServicoService {
 
    atualizarOrdemDeServico(id:any, ordemDeServico: OrdemDeServicoModel): Observable<any> {
     return this.http.put('http://localhost:8080/ordem-os/'.concat(id), ordemDeServico);
+  }
+
+  carregarOrdemDeServico(id:any, ordemDeServico: OrdemDeServicoModel): Observable<any> {
+    return this.http.get('http://localhost:8080/ordem-os/'.concat(id));
   }
 
   removerOrdemDeServico(id:any){

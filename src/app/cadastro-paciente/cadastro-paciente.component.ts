@@ -77,11 +77,11 @@ export class CadastroPacienteComponent implements OnInit {
       { label: '20', value: 3 },
       { label: '21', value: 4 },
       { label: '22', value: 5 },
-
     ];*/
-}
 
 
+
+  }
 
 
 

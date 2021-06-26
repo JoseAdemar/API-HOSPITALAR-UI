@@ -1,3 +1,4 @@
+import { OrdemDeServicoService } from './ordem-de-servico.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -48,11 +50,12 @@ import { HomeComponent } from './home/home.component';
         { path: '', component: HomeComponent},
         { path: 'cadastro-paciente', component: CadastroPacienteComponent},
         { path: 'cadastro-paciente/:id', component: CadastroPacienteComponent},
-        { path: 'cadastro-os', component: OrdemDeServicoComponent}
+        { path: 'cadastro-os', component: OrdemDeServicoComponent},
+        { path: 'cadastro-os/:id', component: OrdemDeServicoComponent},
     ])
   ],
 
-  providers: [HttpClientModule, PacientesService],
+  providers: [HttpClientModule, PacientesService,OrdemDeServicoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,6 +27,12 @@ export class OrdemDeServicoComponent implements OnInit {
     }, error => { console.log('Erro ao atualizar OS de ordem de serviço', error) })
   }
 
+  editar(id: number) {
+    this.ordemDeServicoService.carregarOrdemDeServico(id, this.registro).subscribe(data => {
+    this.registro = data;
+  });
+}
+
   remover(id:number){
       this.ordemDeServicoService.removerOrdemDeServico(id).subscribe(data => {
       this.registro = new OrdemDeServicoModel();
@@ -36,7 +42,7 @@ export class OrdemDeServicoComponent implements OnInit {
   }
 
 
-  
+
   cadastrar() {
     console.log(this.registro);
     this.ordemDeServicoService.cadastrarOrdemDeServico(this.registro).subscribe(data => {
@@ -61,12 +67,12 @@ export class OrdemDeServicoComponent implements OnInit {
 
 
 
- /* 
+ /*
   registros = [
     { nome: 'Pedro Martins',idade: '25', nascimento: '18/06/1990', telefone: '8542158' },
     { nome: 'Pedro Martins',idade: '25', nascimento: '18/06/1990', telefone: '8542158' },
     { nome: 'Pedro Martins',idade: '25', nascimento: '18/06/1990', telefone: '8542158' },
-    
+
   ];
 }
 

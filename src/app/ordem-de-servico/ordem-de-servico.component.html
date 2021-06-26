@@ -2,50 +2,54 @@
 
     <br />
     <h2>Tela cadastro de ordem de serviço</h2>
-  
+
     <form>
-  
+
       <div class="p-grid">
            <div class="p-col-5 p-fluid">
                 <label>Clinica</label>
-                <input type="text" name="clinica" [(ngModel)]="registro.clinica" pInputText>
+                <input type="text" name="clinica" [(ngModel)]="registro.clinica"
+                       pInputText [ngModelOptions]="{standalone: true}">
            </div>
-  
+
             <div class="p-col-5 p-fluid">
                 <label>Médico</label>
-                <input type="text" name="medico" [(ngModel)]="registro.medico" pInputText>
+                <input type="text" name="medico" [(ngModel)]="registro.medico"
+                       pInputText [ngModelOptions]="{standalone: true}">
             </div>
-  
+
             <div class="p-col-2 p-fluid">
               <label>Paciente ID</label>
-              <input type="text" name="paciente" [(ngModel)]="registro.paciente" pInputText>
-  
+              <input type="text" name="paciente" [(ngModel)]="registro.paciente"
+                     pInputText [ngModelOptions]="{standalone: true}">
+
           </div>
-  
+
             <div class="p-col-5 p-fluid">
               <label>Exame</label>
-              <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" name="exame" [(ngModel)]="registro.exame"></textarea>
+              <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"
+               name="exame" [(ngModel)]="registro.exame" [ngModelOptions]="{standalone: true}"></textarea>
           </div>
-  
+
           <div class="p-col-12">
             <button pButton type="button" (click)="cadastrar()" label="Cadastrar"></button>
         </div>
       </div>
-  
+
     </form>
     <br/>
-  
+
     <div class="p-grid">
-  
+
           <div class="p-col-5 p-fluid">
                <input type="text" pInputText>
           </div>
-  
+
           <div class="p-col-3">
                <button pButton type="button" label="Pesquisar"></button>
           </div>
     </div>
-  
+
     <div class="p-grid">
       <div class="p-col-12">
         <p-table [value]="ordemDeServico" [paginator]="true" rows="1" styleClass="p-datatable-striped">
@@ -69,7 +73,10 @@
               <td class="col-valor-content">{{ registro.exame }}</td>
               <td class="col-valor-content">{{ registro.dataHora }}</td>
               <td>
-                <a pButton (click)="atualizar(registro.id)" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>&nbsp;
+                <a pButton (click)="editar(registro.id)"
+                   icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                   routerLink="/cadastro-os/{{registro.id}}"></a>&nbsp;
+
                 <button pButton (click)="remover(registro.id)" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
               </td>
             </tr>
@@ -77,9 +84,8 @@
         </p-table>
       </div>
     </div>
-  
-  
-  
-  
+
+
+
+
   </div>
-  
