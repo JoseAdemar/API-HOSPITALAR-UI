@@ -1,91 +1,89 @@
 <div class="container">
 
-    <br />
-    <h2>Tela cadastro de ordem de serviço</h2>
+  <br />
+  <h2>Tela cadastro de ordem de serviço</h2>
 
-    <form>
+  <form>
 
-      <div class="p-grid">
-           <div class="p-col-5 p-fluid">
-                <label>Clinica</label>
-                <input type="text" name="clinica" [(ngModel)]="registro.clinica"
-                       pInputText [ngModelOptions]="{standalone: true}">
-           </div>
-
-            <div class="p-col-5 p-fluid">
-                <label>Médico</label>
-                <input type="text" name="medico" [(ngModel)]="registro.medico"
-                       pInputText [ngModelOptions]="{standalone: true}">
-            </div>
-
-            <div class="p-col-2 p-fluid">
-              <label>Paciente ID</label>
-              <input type="text" name="paciente" [(ngModel)]="registro.paciente"
-                     pInputText [ngModelOptions]="{standalone: true}">
-
-          </div>
-
-            <div class="p-col-5 p-fluid">
-              <label>Exame</label>
-              <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"
-               name="exame" [(ngModel)]="registro.exame" [ngModelOptions]="{standalone: true}"></textarea>
-          </div>
-
-          <div class="p-col-12">
-            <button pButton type="button" (click)="cadastrar()" label="Cadastrar"></button>
-        </div>
+    <div class="p-grid">
+      <div class="p-col-5 p-fluid">
+        <label>Clinica</label>
+        <input type="text" name="clinica" [(ngModel)]="registro.clinica" pInputText
+          [ngModelOptions]="{standalone: true}">
       </div>
 
-    </form>
-    <br/>
+      <div class="p-col-5 p-fluid">
+        <label>Médico</label>
+        <input type="text" name="medico" [(ngModel)]="registro.medico" pInputText [ngModelOptions]="{standalone: true}">
+      </div>
 
-    <div class="p-grid">
+      <div class="p-col-2 p-fluid">
+        <label>Paciente ID</label>
+        <input type="text" name="paciente" [(ngModel)]="registro.paciente.id" pInputText
+          [ngModelOptions]="{standalone: true}">
+      </div>
 
-          <div class="p-col-5 p-fluid">
-               <input type="text" pInputText>
-          </div>
+      <div class="p-col-5 p-fluid">
+        <label>Exame</label>
+        <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" name="exame"
+          [(ngModel)]="registro.exame" [ngModelOptions]="{standalone: true}"></textarea>
+      </div>
 
-          <div class="p-col-3">
-               <button pButton type="button" label="Pesquisar"></button>
-          </div>
-    </div>
-
-    <div class="p-grid">
       <div class="p-col-12">
-        <p-table [value]="ordemDeServico" [paginator]="true" rows="1" styleClass="p-datatable-striped">
-          <ng-template pTemplate="header">
-            <tr>
-              <th class="col-data-header">Id</th>
-              <th class="col-data-header">Clinica</th>
-              <th class="col-data-header">Médico</th>
-              <th class="col-data-header">Paciente ID</th>
-              <th class="col-valor-header">Exame</th>
-              <th class="col-valor-header">Data</th>
-              <th class="col-data-header" style="align-content:center; width: 117px; "></th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body">
-             <tr *ngFor='let registro of ordemDeServico'>
-              <td class="col-data-content">{{ registro.id }}</td>
-              <td class="col-data-content">{{ registro.clinica }}</td>
-              <td class="col-data-content">{{ registro.medico }}</td>
-              <td class="col-data-content">{{ registro.paciente }}</td>
-              <td class="col-valor-content">{{ registro.exame }}</td>
-              <td class="col-valor-content">{{ registro.dataHora }}</td>
-              <td>
-                <a pButton (click)="editar(registro.id)"
-                   icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                   routerLink="/cadastro-os/{{registro.id}}"></a>&nbsp;
-
-                <button pButton (click)="remover(registro.id)" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
+        <button pButton type="button" (click)="cadastrar()" label="Cadastrar"></button>
       </div>
     </div>
 
+  </form>
+  <br />
 
+  <div class="p-grid">
 
+    <div class="p-col-5 p-fluid">
+      <input type="text" pInputText>
+    </div>
 
+    <div class="p-col-3">
+      <button pButton type="button" label="Pesquisar"></button>
+    </div>
   </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="ordemDeServico" [paginator]="true" rows="1" styleClass="p-datatable-striped">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="col-data-header">Clinica</th>
+            <th class="col-data-header">Médico</th>
+            <th class="col-data-header">Paciente</th>
+            <th class="col-data-header">Paciente ID</th>
+            <th class="col-valor-header">Exame</th>
+            <th class="col-valor-header">Data</th>
+            <th class="col-data-header" style="align-content:center; width: 117px; "></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body">
+          <tr *ngFor='let registro of ordemDeServico'>
+            <td class="col-data-content">{{ registro.clinica }}</td>
+            <td class="col-data-content">{{ registro.medico }}</td>
+            <td class="col-data-content">{{ registro.paciente.nome }}</td>
+            <td class="col-data-content">{{ registro.paciente.id }}</td>
+            <td class="col-valor-content">{{ registro.exame }}</td>
+            <td class="col-valor-content">{{ registro.dataHora }}</td>
+            <td>
+              <a pButton (click)="editar(registro.id)" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                routerLink="/cadastro-os/{{registro.id}}"></a>&nbsp;
+
+              <button pButton (click)="remover(registro.id)" icon="pi pi-trash" pTooltip="Excluir"
+                tooltipPosition="top"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+
+
+
+</div>

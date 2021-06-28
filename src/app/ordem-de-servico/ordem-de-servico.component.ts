@@ -12,6 +12,7 @@ export class OrdemDeServicoComponent implements OnInit {
 
   registro: OrdemDeServicoModel = new OrdemDeServicoModel();
   ordemDeServico: Array<any> = new Array();
+  ngx: any;
 
     constructor(private ordemDeServicoService: OrdemDeServicoService) {}
 
@@ -44,10 +45,12 @@ export class OrdemDeServicoComponent implements OnInit {
 
 
   cadastrar() {
-    console.log(this.registro);
+
     this.ordemDeServicoService.cadastrarOrdemDeServico(this.registro).subscribe(data => {
          this.registro = new OrdemDeServicoModel();
+         console.log(this.registro);
          this.listarOrdemDeServico();
+
 
     }, error => { console.log('Erro ao cadastrar OS', error) })
   }

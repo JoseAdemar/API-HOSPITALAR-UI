@@ -1,10 +1,11 @@
-import { PacienteModel } from './pacient.model';
+import { PacienteModel } from 'src/app/models/pacient.model';
+
 export class OrdemDeServicoModel {
     public id: number;
     public clinica: string;
     public medico: string;
-    public paciente: object;
+    public paciente = new PacienteModel();
     public exame: string;
-    public dataHora: string
+    public dataHora: string;
 
 }
