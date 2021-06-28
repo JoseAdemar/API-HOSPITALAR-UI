@@ -1,27 +1,20 @@
 # APIHOSPITALARUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
+Esse projeto foi criado com [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
 
-## Development server
+## Descrição do projeto
+O projeto angular segue o seguinte modelo:
+Foi criada uma tela inicial do sistema e também criado os menu Home, Paciente e OS.
+No menu Paciente é possível fazer o cadastro do Paciente colhendo os seguintes dados:
+Nome, CPF, Idade, Data de nascimento e telefone. Com esses dados cadastrado é possível fazer
+atualização dos dados e também exclusão .
+No menu OS é possível cadastrar uma ordem de serviço vinculando a ordem de serviço a um cadastro de paciente pelo ID do paciente. 
+Ao cadastrar uma OS é possível visualizar na tabela do frontend as seguintes informações:
+Nome da clínica, nome do médico que solicitou o exame, o nome do paciente e o id do paciente e o exame solicitado pelo médico e também
+a data que foi criada a ordem de serviço podendo essas informações ser atualizadas ou excluídas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Observações:
 
-## Code scaffolding
+Frontend feito em angular e também utilização do primeng funcionando a parte de CRUD no consumo da API que se encontra no seguinte endereço do GitHub: https://github.com/JoseAdemar/API-HOSPITALAR
+Alguns recursos não foi implementado no frontend porém foi implementado na API.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
